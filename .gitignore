@@ -17,6 +17,7 @@ dist/
 
 # Data files
 data/
+data_old_backup/
 
 # IDE
 .vscode/
