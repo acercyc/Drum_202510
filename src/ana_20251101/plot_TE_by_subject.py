@@ -3,7 +3,7 @@ Plot Transfer Entropy (TE), Q1, and Q2 grouped by subject.
 
 For each subject, creates a plot showing:
 - TE values over time (dates)
-- Q1 and Q2 SoA ratings over time
+- Q1 (pre-SoA) and Q2 (post-SoA) ratings over time
 - Vertical lines separating different dates
 """
 import pandas as pd
@@ -138,7 +138,7 @@ def plot_subject_data(df: pd.DataFrame, subject: str, save_dir: Path = None, sho
     
     # Set labels and title
     ax1.set_xlabel('Session Index (separated by date)', fontsize=12, fontweight='bold')
-    ax1.set_ylabel('Q1 & Q2 (SoA Ratings)', fontsize=12, fontweight='bold', color='tab:blue')
+    ax1.set_ylabel('Q1 (pre-SoA) & Q2 (post-SoA)', fontsize=12, fontweight='bold', color='tab:blue')
     ax2.set_ylabel('Transfer Entropy (TE)', fontsize=12, fontweight='bold', color='tab:green')
     
     # Color the y-axis labels
@@ -197,9 +197,9 @@ def plot_subject_data(df: pd.DataFrame, subject: str, save_dir: Path = None, sho
         y_position = 1.02  # Above the axes (1.0 is top of axes)
         
         if 'Q1' in correlations:
-            # Q1 correlation with blue color for label
+            # Q1 (pre-SoA) correlation with blue color for label
             fig.text(0.98, y_position, 
-                    f"TE-Q1: r={correlations['Q1']:.3f}", 
+                    f"TE-Q1 (pre-SoA): r={correlations['Q1']:.3f}", 
                     fontsize=11,
                     verticalalignment='bottom',
                     horizontalalignment='right',
@@ -210,9 +210,9 @@ def plot_subject_data(df: pd.DataFrame, subject: str, save_dir: Path = None, sho
             y_position += 0.05
         
         if 'Q2' in correlations:
-            # Q2 correlation with orange color for label
+            # Q2 (post-SoA) correlation with orange color for label
             fig.text(0.98, y_position, 
-                    f"TE-Q2: r={correlations['Q2']:.3f}", 
+                    f"TE-Q2 (post-SoA): r={correlations['Q2']:.3f}", 
                     fontsize=11,
                     verticalalignment='bottom',
                     horizontalalignment='right',

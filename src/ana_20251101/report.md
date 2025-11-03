@@ -20,9 +20,9 @@ This report presents an analysis of Transfer Entropy (TE) in drum performance da
 - **Preprocessing**: Signal smoothing using impulse response convolution and onset detection
 
 **Sense of Agency Measurement:**
-- **Q1**: Achievement level rating (0-100)
-- **Q2**: Sense of agency rating (0-100)
-- Collected via questionnaire after each practice session
+- **Q1**: Pre-SoA rating (0-100) - Sense of Agency rating before practice session
+- **Q2**: Post-SoA rating (0-100) - Sense of Agency rating after practice session
+- Collected via questionnaire
 
 **Data Quality:**
 - Only sessions with complete data (both NI sensor data and SoA ratings) were included
@@ -40,8 +40,8 @@ Each subject has a dedicated plot showing the temporal progression of TE, Q1, an
   - Right axis (green): Transfer Entropy values (typically 0.00-0.05)
   
 - **Data Series**:
-  - **Q1** (blue circles): Achievement level ratings over time
-  - **Q2** (orange squares): Sense of agency ratings over time  
+  - **Q1** (blue circles): Pre-SoA ratings over time
+  - **Q2** (orange squares): Post-SoA ratings over time  
   - **TE** (green triangles): Transfer Entropy values over time
 
 - **X-Axis**:
@@ -88,7 +88,7 @@ Correlation coefficients between Transfer Entropy and SoA ratings were computed 
 
 Contrary to initial predictions, the analysis reveals that Transfer Entropy tracks Sense of Agency ratings (Q1 and Q2) surprisingly well. The data shows a consistent pattern:
 
-1. **Parallel Increases**: Both Q1/Q2 and TE increase over time as participants practice
+1. **Parallel Increases**: Both pre-SoA (Q1), post-SoA (Q2), and TE increase over time as participants practice
 2. **Positive Relationships**: Despite the prediction that higher TE (indicating stronger coupling to reference) might correspond to lower SoA (less sense of control), the opposite pattern emerges
 3. **Consistent Across Subjects**: The positive relationship is observed across most participants, with moderate to strong correlations (r=0.27-0.57)
 

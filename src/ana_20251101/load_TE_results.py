@@ -111,7 +111,7 @@ def explore_results(df: pd.DataFrame):
     
     # SoA statistics (if available)
     if 'Q1' in df.columns:
-        print("\nSoA Q1 Statistics:")
+        print("\nSoA Q1 (pre-SoA) Statistics:")
         q1_valid = df['Q1'].dropna()
         print(f"  Valid Q1 values: {len(q1_valid)} / {len(df)}")
         print(f"  Mean: {q1_valid.mean():.2f}")
@@ -119,7 +119,7 @@ def explore_results(df: pd.DataFrame):
         print(f"  Range: {q1_valid.min():.0f} - {q1_valid.max():.0f}")
     
     if 'Q2' in df.columns:
-        print("\nSoA Q2 Statistics:")
+        print("\nSoA Q2 (post-SoA) Statistics:")
         q2_valid = df['Q2'].dropna()
         print(f"  Valid Q2 values: {len(q2_valid)} / {len(df)}")
         print(f"  Mean: {q2_valid.mean():.2f}")
