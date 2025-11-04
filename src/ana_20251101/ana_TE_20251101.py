@@ -225,7 +225,25 @@ for i, group in enumerate(complete_groups):
     soa_data = None
     if group.soa_csv and group.soa_csv.exists():
         try:
-            soa_data = pd.read_csv(group.soa_csv)
+            # Try reading with header first
+            soa_data_temp = pd.read_csv(group.soa_csv, nrows=1)
+            
+            # Check if header is missing (columns don't match expected names)
+            expected_cols = ['name', 'Q1', 'Q2', 'datetime']
+            has_header = all(col in soa_data_temp.columns for col in expected_cols)
+            
+            if not has_header:
+                # File is missing header - read without header and add column names
+                soa_data = pd.read_csv(group.soa_csv, header=None)
+                if len(soa_data.columns) >= 4:
+                    soa_data.columns = expected_cols[:len(soa_data.columns)]
+                    print(f"  Warning: SoA CSV missing header, added column names")
+                else:
+                    print(f"  Warning: SoA CSV has unexpected number of columns: {len(soa_data.columns)}")
+            else:
+                # File has proper header - read normally
+                soa_data = pd.read_csv(group.soa_csv)
+            
             print(f"  Loaded SoA data: {len(soa_data)} rows")
         except Exception as e:
             print(f"  Error: Could not load SoA CSV: {e}")
